@@ -12,44 +12,24 @@ class Alunos
         $this->_connectionBase = new Connection();
     }
 
-    public function all($id = '') {
+    public function all() {
 
-		if($id != '') {
-			$where = "id = " .$id;
-        } 
-        else {
-			$where = "1=1";
-		}
-		
         return $this->_connectionBase->executeWithReturnAll
         ("SELECT * FROM tb_alunos
-		WHERE $where
         ORDER BY id"); 
     }
 
     public function insert($request) {
         $nome_completo = $request['nome_completo'] ?? '';
         $email         = $request['email']         ?? '';
-        $sexo          = $request['sexo']          ?? '';
-        $idade         = $request['idade']         ?? '';
-        $telefone      = $request['telefone']      ?? '';
-        $turno         = $request['turno']         ?? '';
-        $curso         = $request['curso']         ?? '';
-        $rg            = $request['rg']            ?? '';
-        $cpf           = $request['cpf']           ?? '';
+        $sexo          = $request['genero']          ?? '';
 
         $sql = "INSERT INTO tb_alunos
-                                (nome_completo, email, sexo, idade, telefone, turno, curso, rg, cpf)
+                                (nome_completo, email, genero)
                                 VALUES
                                 ('".$nome_completo ."',
                                  '".$email ."',
-                                 '".$sexo ."',
-                                 '".$idade ."',
-                                 '".$telefone ."',
-                                 '".$turno ."',
-                                 '".$curso ."',
-                                 '".$rg ."',
-                                 '".$cpf ."'
+                                 '".$genero ."',
                                 ) RETURNING id;";
         try {
             $ret = $this->_connectionBase->executeWithReturnRow($sql);
@@ -65,13 +45,7 @@ class Alunos
         $sql = "UPDATE tb_alunos SET
                                 nome_completo = '".$request['nome_completo'] ."',
                                 email         = '".$request['email'] ."',
-                                sexo          = '".$request['sexo'] ."',
-                                idade         = '".$request['idade'] ."',
-                                telefone      = '".$request['telefone'] ."',
-                                turno         = '".$request['turno'] ."',
-                                curso         = '".$request['curso'] ."',
-                                rg            = '".$request['rg'] ."',
-                                cpf           = '".$request['cpf'] ."'
+                                genero        = '".$request['genero'] ."',
                                 WHERE id = $id;";
         try {
             $ret = $this->_connectionBase->executeWithReturnRow($sql);

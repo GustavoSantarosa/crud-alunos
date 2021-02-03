@@ -1,35 +1,37 @@
 {
-  "name": "front-end",
+  "name": "qyon-plug-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/pickers": "^3.2.10",
+    "@qyon-brazil/octopancake": "^1.1.7",
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.13.1",
+    "react-idle-timer": "^4.5.0",
     "react-loadingg": "^1.7.2",
+    "react-router": "4.3.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "react-toastify": "^7.0.3",
-    "reactstrap": "^8.9.0",
-    "tinymask": "^1.0.2",
-    "web-vitals": "^0.2.4"
+    "react-scripts": "3.4.3",
+    "react-text-mask": "^5.4.3",
+    "react-toastify": "^4.4.3",
+    "reactstrap": "^6.5.0",
+    "tinymask": "^1.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+
+    "start": "set PORT=5030 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -42,5 +44,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-loader": "^5.0.0",
+    "static-site-generator-webpack-plugin": "^3.4.2",
+    "style-loader": "^2.0.0"
   }
 }

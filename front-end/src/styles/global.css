@@ -1,194 +1,260 @@
 .wrapper {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  width: 37%;
-  min-height: 100%;
-  padding: 20px;
-  margin-left: 306px;
-  background-color: white;
-}
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+  }
+
 
 #formContent {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  width: 100%;
-  max-width: 600px;
-  position: relative;
-  padding: 20px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  text-align: center;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    padding: 20px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 30px 60px 0 rgba(102, 102, 102, 0.2);
+    text-align: center;
+  }
+
+.checkboxColor {
+  color: gray !important;
+}
+
+.checkboxColor:hover {
+  background-color: #2184cf1a !important;
+}
+
+.subTitle{
+  color: rgb(70, 70, 70);
+  font-size: 17px;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+.eyePasswordIcon {
+  width: 15px; 
+  height: 15px
 }
 
 .title {
-  font-size: 35px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 200;
   color: gray;
 }
 
-#buttonCard {
-  margin-top: 40px;
-  background: #868686;
-  border: rgb(76, 76, 77);
+.iconInserir{
+  width: 25px;
+  margin-right: 10px;
 }
 
-#buttonTable {
-  color: white;
-  background: #868686;
-  border: rgb(76, 76, 77);
+.iconFiltro{
+  width: 20px;
+  margin-top: 18px;
+  margin-right: 4px;
+}
+
+.iconAtivo {
+  width: 18px;
+}
+
+#buttonStyle {
+    margin-top: 40px;
+    background: #1a75bc;
+}
+
+#buttonStyle:hover {
+  background: #4091cf;
+}
+
+#buttonInserir {
+    text-transform: none;
+    background-color: #1a75bc;
+    color: white;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500px;
+    font-size: 12px;
+}
+
+#buttonInserir:hover {
+  background-color: #4091cf;
 }
 
 .formControl {
-  width: 100%;
+    width: 100%;
 }
 
 .containerTable {
   margin-left: 200px;
-  padding-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .iconGoBack {
-  color: #3f51b5;
-  margin-right: 10px;
+  color: #1a75bc;
+  margin-right: 10px; 
   width: 30px;
   height: 30px;
   margin-bottom: 20px;
   cursor: pointer;
 }
 
+.iconGoBack:hover {
+  background-color: rgb(236, 236, 236);
+  border-radius: 20px;
+}
+
 .fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
 @-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
   }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
+  
 @keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
   }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-/* Simple CSS3 Fade-in Animation */
+  
+  /* Simple CSS3 Fade-in Animation */
 @-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  to {
-    opacity: 1;
-  }
-}
 
 @-moz-keyframes fadeIn {
-  from {
-    opacity: 0;
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  to {
-    opacity: 1;
-  }
-}
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  to {
-    opacity: 1;
-  }
-}
-
+  
 .fadeIn {
-  opacity: 0;
-  -webkit-animation: fadeIn ease-in 1;
-  -moz-animation: fadeIn ease-in 1;
-  animation: fadeIn ease-in 1;
-
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  animation-duration: 1s;
-}
-
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+  
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+  }
+  
 .fadeIn.first {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
-
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  
 .fadeIn.second {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+  
 .fadeIn.third {
-  -webkit-animation-delay: 0.8s;
-  -moz-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+  
 .fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
-/* Simple CSS3 Fade-in Animation */
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
 .underlineHover:after {
-  display: block;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 2px;
-  background-color: #56baed;
-  content: "";
-  transition: width 0.2s;
-}
-
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+  }
+  
 .underlineHover:hover {
-  color: #0d0d0d;
-}
-
+    color: #0d0d0d;
+  }
+  
 .underlineHover:hover:after {
-  width: 100%;
-}
-
-/* OTHERS */
-
+    width: 100%;
+  }
+  
+  /* OTHERS */
+  
 *:focus {
-  outline: none;
+    outline: none;
+  }
+  
+#icon {
+    width: 60%;
+  }
+
+.removeImgIcon {
+  width: 18px;
+  margin-right: 3px;
 }
 
-#icon {
-  width: 60%;
+.cloudIconGray {
+  margin-right: 5px;
+}
+
+.cloudIconBlue {
+  color: #4b99d4;
+  margin-right: 5px;
 }

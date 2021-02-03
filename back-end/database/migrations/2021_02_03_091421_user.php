@@ -15,13 +15,13 @@ class User extends Migration
     {
         Schema::create('tb_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email', 255)->unique();
-            $table->string('nome', 255);
-            $table->string('senha', 100);
+            $table->string('Email', 255)->unique();
+            $table->string('Nome', 255);
+            $table->string('Senha', 100);
         });
 
         $data = [
-            ['email'=>'master@master.com', 'nome'=> 'Master', 'senha' => encrypt('master123')]
+            ['Email'=>'master@master.com', 'Nome'=> 'Master', 'Senha' => encrypt('master123')]
         ]; 
 
         DB::table('tb_user')->insert($data);

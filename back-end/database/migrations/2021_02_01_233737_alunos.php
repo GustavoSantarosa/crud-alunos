@@ -15,16 +15,9 @@ class Alunos extends Migration
     {
         Schema::create('tb_alunos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome_completo');
-            $table->string('email', 255)->unique();
-            $table->char('sexo', 1);
-            $table->integer('idade');
-            $table->char('telefone', 12);
-            $table->string('turno');
-            $table->string('curso');
-            $table->char('rg', 12);
-            $table->char('cpf', 14);
-
+            $table->string('Nome');
+            $table->string('Email', 255)->unique();
+            $table->char('Genero', 1);
         });
     }
 
