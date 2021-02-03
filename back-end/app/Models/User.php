@@ -2,42 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Lib\Connection;
 
-class User extends Authenticatable
+class User 
 {
-    use HasFactory, Notifiable;
+    protected $_connectionBase;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    public function __construct() {
+        $this->_connectionBase = new Connection();
+    }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function getUser($id) {
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+        return $this->_connectionBase->executeWithReturnAll
+        ("SELECT * FROM tb_user
+		WHERE id = $id"); 
+    }
 }
