@@ -18,12 +18,12 @@
   
 <a name="rodarapi"/></a>
 ## Rodar API	
-  na pasta do backend: digite php artisan migrate
-  rode o laravel: php artisan serve
+   - na pasta do backend: digite php artisan migrate
+   - rode o laravel: php artisan serve
 <a name="rodarjs"/></a>  
 ## Rodar ReactJs
-  na pasta do frontend: npm i
-  npm start
+  - na pasta do frontend: npm i
+  - npm start
   
      
 <a name="autor"/></a>
