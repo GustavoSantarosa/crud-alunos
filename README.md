@@ -2,7 +2,8 @@
 1.  [Iniciando](#iniciando)
 2.  [Rodar Api](#rodarapi)
 3.  [Rodar React](#rodarjs)
-4.  [Autor](#autor)
+4.  [Usuario Padrão](#usuariopadrao)
+5.  [Autor](#autor)
 
 
 <a name="iniciando"/></a>
@@ -24,6 +25,11 @@
 ## Rodar ReactJs
   - na pasta do frontend: npm i
   - npm start
+
+<a name="usuariopadrao"/></a> 
+## Usuario Padrão para teste
+  - Master
+  - master123
   
      
 <a name="autor"/></a>
