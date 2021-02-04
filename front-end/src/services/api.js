@@ -6,16 +6,32 @@ const defaultErrorMessages = {
 };
 
 axios.interceptors.response.use(
-  (response) => {
+  response => {
+    if (
+      response.status === 200 &&
+      response.data.warnings &&
+      Array.isArray(response.data.warnings)
+    ) {
+      response.data.warnings.map(e => notify(e, true, "warning"));
+    }
+
     return response;
   },
-  (error) => {
+  error => {
     //Erro de conexão
     if (error.message && error.message === "Network Error") {
       notify(
         "Não foi possível esabelecer uma conexão com o servidor. Verifique sua internet e tente novamente."
       );
       return Promise.reject(error);
+    }
+
+    if (
+      error.data &&
+      error.data.warnings &&
+      Array.isArray(error.data.warnings)
+    ) {
+      error.data.warnings.map(e => notify(e, true, "warning"));
     }
 
     if (
@@ -47,6 +63,17 @@ axios.interceptors.response.use(
     if (!expectedError && !axios.isCancel(error)) {
       console.log("Logging the error: " + error);
       console.log(error.response);
+
+      if (
+        error.response.data &&
+        error.response.data.indexOf("File format not accepted") !== -1
+      ) {
+        notify(
+          "Respeite os formatos permitidos para o anexo: PNG, JPEG e JPG."
+        );
+      } else {
+        notify("Um erro inesperado aconteceu.");
+      }
     } else if (expectedError) {
       if (defaultErrorMessages[error.response.status]) {
         notify(defaultErrorMessages[error.response.status], true);
@@ -68,8 +95,10 @@ axios.defaults.baseURL = process.env.REACT_APP_API_PLUG;
 axios.defaults.timeout = 1 * 60 * 60 * 10000000;
 
 function setToken() {
-  axios.defaults.headers.common["authentication"] =
-    sessionStorage.token || null;
+  axios.defaults.headers.common["x-auth-token"] = sessionStorage.token || null;
+  axios.defaults.headers.common["email"] = sessionStorage.Email || null;
+  axios.defaults.headers.common["refreshToken"] =
+    sessionStorage.refreshToken || null;
 }
 
 export default {

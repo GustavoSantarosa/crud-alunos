@@ -1,5 +1,5 @@
 {
-  "name": "qyon-plug-web",
+  "name": "cadastro-de-alunos",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,7 +8,6 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/pickers": "^3.2.10",
-    "@qyon-brazil/octopancake": "^1.1.7",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.0",
     "react": "^16.14.0",
@@ -24,8 +23,8 @@
     "tinymask": "^1.0.2"
   },
   "scripts": {
-
-    "start": "set PORT=5030 && react-scripts start",
+    "start": "PORT=5030 react-scripts start",
+    "start-dev": "set PORT=5030 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

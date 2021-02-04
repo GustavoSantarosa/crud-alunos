@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 use App\Lib\Connection;
 
@@ -18,4 +19,15 @@ class User
         ("SELECT * FROM tb_user
 		WHERE id = $id"); 
     }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
 }

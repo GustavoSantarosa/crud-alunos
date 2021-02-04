@@ -17,7 +17,7 @@ class User extends Migration
             $table->bigIncrements('id');
             $table->string('Email', 255)->unique();
             $table->string('Nome', 255);
-            $table->string('Senha', 100);
+            $table->string('Senha', 255);
         });
 
         $data = [

@@ -1,0 +1,19 @@
+.containerCheckbox {
+    margin-top: 10px;
+    color: #828282
+}
+.containerFormUser{
+    margin-left: 120px;
+}
+
+#controlUser {
+    margin-bottom: 10px;
+}
+
+.containerLists {
+    display: flex;
+}
+
+.textList {
+    margin-right: 30px;
+}

@@ -14,25 +14,35 @@ class AlunosController extends Controller
         $Alunos    = new Alunos();
         $allAlunos = $Alunos->all();
 
+        if(!$allAlunos){
+            return response()->json(
+                dataPrepare::successMessage(
+                   'Houve algum erro ao carregar os Alunos!, por favor verifique a conexão',
+                   ErrorCodes::COD_ERROR_NOT_IDENTIFIED ,
+               )
+           ,404);  
+        }
+
         return response()->json([            
             'alunos' =>$allAlunos]);
 
     }
 	
-	public function getId($id)
-    {
-        $Alunos    = new Alunos();
-        $allAlunos = $Alunos->all($id);
-
-        return response()->json([            
-            'alunos' =>$allAlunos]);
-
-    }
 
     public function store(Request $request) 
     {
         $Alunos    = new Alunos();
         $ret       = $Alunos->insert($request);
+
+        
+        if(!$ret){
+            return response()->json(
+                dataPrepare::successMessage(
+                   'Houve algum erro ao inserir o aluno!',
+                   ErrorCodes::COD_ERROR_NOT_IDENTIFIED ,
+               )
+           ,404);  
+        }
 
         return response()->json(
              dataPrepare::successMessage(
@@ -47,6 +57,15 @@ class AlunosController extends Controller
         $Alunos    = new Alunos();
         $ret       = $Alunos->update($request, $id);
 
+        if(!$ret){
+            return response()->json(
+                dataPrepare::successMessage(
+                   'Houve algum erro ao editar o aluno!',
+                   ErrorCodes::COD_ERROR_NOT_IDENTIFIED ,
+               )
+           ,404);  
+        }
+
         return response()->json(
              dataPrepare::successMessage(
                 'Aluno alterado com sucesso!',
@@ -59,6 +78,15 @@ class AlunosController extends Controller
     {
         $Alunos    = new Alunos();
         $ret       = $Alunos->delete($id);
+
+        if(!$ret){
+            return response()->json(
+                dataPrepare::successMessage(
+                   'Houve algum erro ao deletar o aluno!',
+                   ErrorCodes::COD_ERROR_NOT_IDENTIFIED ,
+               )
+           ,404);  
+        }
 
         return response()->json(
              dataPrepare::successMessage(
