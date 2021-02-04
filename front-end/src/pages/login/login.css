@@ -14,7 +14,6 @@
 }
 
 .imageBackgroudContainer {
-  background-image: url("./fundo-login.jpg");
   max-width:749px;
   max-height:550px;
   background-size: cover; 

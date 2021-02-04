@@ -5,7 +5,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 use App\Lib\Connection;
 
-class User 
+class User implements JWTSubject
 {
     protected $_connectionBase;
 
@@ -28,6 +28,11 @@ class User
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public static function encryptPassword(string $password)
+    {
+        return bcrypt($password);
     }
 
 }

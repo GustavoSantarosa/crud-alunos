@@ -14,9 +14,12 @@ Route::group(['prefix' => 'public'] , function () use ($routes){
 
 Route::group(['prefix' => 'public'] , function () use ($routes){
     Route::group(['prefix' => 'user'], function() {
-            Route::get('/',                             'AlunosController@index');
-            Route::post('/store',                       'AlunosController@store');
-            Route::put('/update/{id}',                  'AlunosController@update');
-            Route::delete('/delete/{id}',               'AlunosController@destroy');
+            Route::get('/',                             'UserController@index');
+        });
+});
+
+Route::group(['prefix' => 'public'] , function () use ($routes){
+    Route::group(['prefix' => 'login'], function() {
+            Route::get('/',                             'AuthController@login');
         });
 });

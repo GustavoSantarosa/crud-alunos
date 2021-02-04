@@ -20,11 +20,6 @@ class User extends Migration
             $table->string('Senha', 255);
         });
 
-        $data = [
-            ['Email'=>'master@master.com', 'Nome'=> 'Master', 'Senha' => encrypt('master123')]
-        ]; 
-
-        DB::table('tb_user')->insert($data);
     }
 
     /**
