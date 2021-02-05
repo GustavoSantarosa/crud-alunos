@@ -39,3 +39,11 @@
   margin-top: 50px;
   border-color: #454545
 }
+
+
+#buttonLogout {
+  background-color: #ff8555;
+  margin-top: 50px;
+  border-color: #af5741;
+  margin: 30px;
+}

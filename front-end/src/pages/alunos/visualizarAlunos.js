@@ -20,11 +20,12 @@ import "react-toastify/dist/ReactToastify.css";
 import api from "../../services/api";
 import { notify } from "../../utils/notify";
 import ModalLoading from "../../components/modalLoading/modalLoading";
+import LogoutButton from "../../components/logoutButton/logoutButton";
 
-function createData(id, nome, email, genero) {
+function createData(id, name, email, genero) {
   return {
     id,
-    nome,
+    name,
     email,
     genero,
   };
@@ -39,10 +40,10 @@ const headCells = [
     sort: true,
   },
   {
-    name: "nome",
+    name: "name",
     numeric: false,
     disablePadding: false,
-    label: "nome",
+    label: "name",
     sort: false,
   },
   {
@@ -129,11 +130,12 @@ const VisualizarAlunos = () => {
       try {
         const { data: response } = await api.get("api/pessoas/v1/aluno");
 
+        console.log("response@@@@@@@@@@@");
         console.log(response);
         const employees = response.map((employee) => {
           return createData(
             employee.id,
-            employee.nome,
+            employee.name,
             employee.email,
             employee.genero
           );
@@ -143,6 +145,8 @@ const VisualizarAlunos = () => {
         setAllRows(response);
         setLoading(false);
       } catch (error) {
+        // notify(error);
+        console.log(error);
         setLoading(false);
       }
     };
@@ -158,7 +162,7 @@ const VisualizarAlunos = () => {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.nome);
+      const newSelecteds = rows.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -178,8 +182,8 @@ const VisualizarAlunos = () => {
     }
   };
 
-  const handleDelete = async (id, nome) => {
-    if (window.confirm(`Você realmente quer apagar o Aluno: ${nome}`)) {
+  const handleDelete = async (id, name) => {
+    if (window.confirm(`Você realmente quer apagar o Aluno: ${name}`)) {
       const rowDelete = allRows.find((rw) => rw.id === id);
 
       if (rowDelete) {
@@ -207,6 +211,7 @@ const VisualizarAlunos = () => {
 
   return (
     <>
+      <LogoutButton />
       {loading && <ModalLoading loading={loading} />}
 
       <div>
@@ -262,7 +267,7 @@ const VisualizarAlunos = () => {
                       return (
                         <TableRow hover tabIndex={-1} key={index}>
                           <TableCell align="left">{row.id}</TableCell>
-                          <TableCell align="left">{row.nome}</TableCell>
+                          <TableCell align="left">{row.name}</TableCell>
                           <TableCell align="left">{row.email}</TableCell>
                           <TableCell align="left">{row.genero}</TableCell>
                           <TableCell align="left">
@@ -277,7 +282,7 @@ const VisualizarAlunos = () => {
                             <Tooltip title="Deletar">
                               <IconButton
                                 aria-label="delete"
-                                onClick={() => handleDelete(row.id, row.nome)}
+                                onClick={() => handleDelete(row.id, row.name)}
                               >
                                 <DeleteIcon className="iconAtivo" />
                               </IconButton>

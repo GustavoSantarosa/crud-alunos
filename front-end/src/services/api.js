@@ -35,8 +35,8 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.timeout = 1 * 60 * 60 * 10000000;
 
 function setToken() {
-  axios.defaults.headers.common["authentication"] =
-    sessionStorage.token || null;
+  axios.defaults.headers.common["Authorization"] =
+    "Bearer " + sessionStorage.token || null;
 }
 
 export default {
