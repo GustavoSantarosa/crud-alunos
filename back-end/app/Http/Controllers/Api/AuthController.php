@@ -1,21 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 class AuthController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login']]);
     }
 
     public function login(Request $request){
-        
         $credentials = $request->only(['email', 'password']);
-
         if (!$token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Não Autorizado'], 401);
         }

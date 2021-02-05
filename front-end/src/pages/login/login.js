@@ -4,10 +4,8 @@ import { IconButton, Input, InputLabel, FormControl } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import api from "../../services/api";
 import UserContext from "../../context/user";
-import isEmail from "../../utils/isEmail";
 import { notify } from "../../utils/notify";
 import ModalLoading from "../../components/modalLoading/modalLoading";
-import { GlobalVariables } from "../../global";
 import "./login.css";
 
 const Login = () => {
@@ -17,7 +15,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     setUser({});
@@ -27,66 +24,26 @@ const Login = () => {
   const onFormSubmit = async e => {
     try {
       e.preventDefault();
-
-      const errorsLogin = {};
-      let isValidated = true;
-
-      if (!isEmail(email)) {
-        isValidated = false;
-        errorsLogin.email = true;
-        notify("Digite um e-mail válido.", true, "error");
-      }
-
-      if (!password || password === "") {
-        isValidated = false;
-        errorsLogin.password = true;
-        notify("Digite a senha.", true, "error");
-      }
-
-      setErrors(errorsLogin);
-      if (!isValidated) return;
-
       setLoading(true);
 
       const { data } = await api.post("usuario/autenticar", {
-        email: email.toLowerCase(),
-        password,
+        Email: email,
+        Senha: password,
       });
 
       if (!data) throw new Error();
 
-      data.password = password;
-      data.email = email;
-
-      if (data.codMessage === GlobalVariables.ACCESS_FIRST) {
-        setLoading(false);
-        return history.push("/changePasswordAccessFirst", data);
-      }
-
-      sessionStorage.setItem("Email", email);
       sessionStorage.setItem("token", data.authCognito.accessToken);
-      sessionStorage.setItem("refreshToken", data.authCognito.refreshToken);
-      sessionStorage.setItem("Nome", data.Nome);
-      sessionStorage.setItem("IdTipoUsuario", data.IdTipoUsuario);
-      sessionStorage.setItem("IdTipoPromotor", data.IdTipoPromotor);
-      sessionStorage.setItem("PromotorCNPJ", data.PromotorCNPJ);
-      sessionStorage.setItem("Id", data.Id);
-      sessionStorage.setItem("accessRoutes", data.accessRoutes.join(","));
 
       setUser({
-        Nome: data.Nome,
-        Id: data.Id.toString(),
-        accessRoutes: data.accessRoutes.join(","),
-        IdTipoUsuario: data.IdTipoUsuario.toString(),
-        IdTipoPromotor: data.IdTipoPromotor.toString(),
-        PromotorCNPJ: data.PromotorCNPJ,
+        Token: data.Token,
       });
 
       setLoading(false);
-      history.push("/homePage");
+      history.push("/visualizarAlunos");
     } catch (error) {
       setLoading(false);
-      setErrors({ email: true, password: true });
+      notify("Email ou senha incorreto.");
     }
   };
 
@@ -97,15 +54,13 @@ const Login = () => {
         <div className="containerFormLogin">
           <div className="imageBackgroudContainer">
             <div className="rightContainer">
-              <div className="containerLogo">
-              </div>
+              <div className="containerLogo"></div>
               <FormControl className="formControl">
                 <InputLabel htmlFor="email">E-mail</InputLabel>
                 <Input
                   autoFocus
                   type="text"
                   value={email}
-                  error={errors.email}
                   onChange={e => setEmail(e.target.value)}
                 />
               </FormControl>
@@ -114,7 +69,6 @@ const Login = () => {
                 <Input
                   type={showPassword ? "text" : "password"}
                   value={password}
-                  error={errors.password}
                   onChange={e => setPassword(e.target.value)}
                   endAdornment={
                     <IconButton
@@ -128,7 +82,6 @@ const Login = () => {
                   }
                 />
               </FormControl>
-
 
               <button
                 id="buttonLogin"

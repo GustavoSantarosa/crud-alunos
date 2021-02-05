@@ -13,11 +13,12 @@ class User extends Migration
      */
     public function up()
     {
-        Schema::create('tb_user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Email', 255)->unique();
-            $table->string('Nome', 255);
-            $table->string('Senha', 255);
+            $table->string('email', 255)->unique();
+            $table->string('name', 255);
+            $table->string('password', 255);
+            $table->timestamps();
         });
 
     }
@@ -29,6 +30,6 @@ class User extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_user');
+        Schema::dropIfExists('users');
     }
 }

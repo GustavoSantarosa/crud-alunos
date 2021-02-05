@@ -2,12 +2,30 @@
 
 namespace Database\Factories;
 
-/** @var \Illuminate\Database\Eloquent\Factories\Factory $factory */;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(\App\Models\User::class, function () {
-    return [
-        "Email"         => 'master@master.com',
-        "Nome"          => 'Master',
-        "Senha"         => User::encryptPassword('Sampler123'),
-    ];
-});
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = User::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => "master",
+            'email' => "master@master.com",
+            'password' => Hash::make("master123"),
+        ];
+    }
+}

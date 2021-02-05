@@ -1,38 +1,45 @@
 <?php
 
 namespace App\Models;
+
+
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use App\Lib\Connection;
-
-class User implements JWTSubject
+class User extends Authenticatable implements JWTSubject
 {
-    protected $_connectionBase;
+    use HasFactory, Notifiable;
 
-    public function __construct() {
-        $this->_connectionBase = new Connection();
-    }
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
-    public function getUser($id) {
-
-        return $this->_connectionBase->executeWithReturnAll
-        ("SELECT * FROM tb_user
-		WHERE id = $id"); 
-    }
-
+        /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
     public function getJWTIdentifier()
     {
         return $this->getKey();
     }
 
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
     public function getJWTCustomClaims()
     {
         return [];
     }
-
-    public static function encryptPassword(string $password)
-    {
-        return bcrypt($password);
-    }
-
 }

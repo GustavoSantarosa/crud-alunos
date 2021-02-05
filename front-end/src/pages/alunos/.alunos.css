@@ -1,0 +1,16 @@
+.containerCheckbox {
+    margin-top: 10px;
+    color: #828282
+}
+
+#controlUser {
+    margin-bottom: 10px;
+}
+
+.containerLists {
+    display: flex;
+}
+
+.textList {
+    margin-right: 30px;
+}
