@@ -19,7 +19,8 @@
   
 <a name="rodarapi"/></a>
 ## Rodar API	
-   - na pasta do backend: digite php artisan migrate
+   - na pasta do backend: digite php artisan migrate:fresh --seed
+   - php artisan key:generate
    - rode o laravel: php artisan serve
 <a name="rodarjs"/></a>  
 ## Rodar ReactJs
@@ -28,7 +29,7 @@
 
 <a name="usuariopadrao"/></a> 
 ## Usuario Padrão para teste
-  - Master
+  - master
   - master123
   
      
