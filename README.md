@@ -13,6 +13,7 @@
   - Na instalação do Postgresql, colocar nome postgres e senha postgres
   - na pasta do backend Renomeie o arquivo .env.example para .env e configure as variaveis de ambiente
   - DB_CONNECTION=pgsql
+  - DB_PORT=5432
   - DB_DATABASE=postgres
   - DB_USERNAME=postgres
   - DB_PASSWORD=postgres
