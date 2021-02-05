@@ -31,7 +31,7 @@
 
 <a name="usuariopadrao"/></a> 
 ## Usuario Padrão para teste
-  - master
+  - master@master.com
   - master123
   
      
