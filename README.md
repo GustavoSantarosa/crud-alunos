@@ -11,7 +11,7 @@
   - Clonar o repositório. (git clone https://github.com/alissoonluan/crud-alunos.git)
   - na pasta do backend: rodar composer install
   - Na instalação do Postgresql, colocar nome postgres e senha postgres
-  - Renomeie o arquivo .env.example para .env e configure as variaveis de ambiente
+  - na pasta do backend Renomeie o arquivo .env.example para .env e configure as variaveis de ambiente
   - DB_CONNECTION=pgsql
   - DB_DATABASE=postgres
   - DB_USERNAME=postgres
