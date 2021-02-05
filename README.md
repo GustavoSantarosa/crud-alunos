@@ -24,8 +24,9 @@
    - rode o laravel: php artisan serve
 <a name="rodarjs"/></a>  
 ## Rodar ReactJs
-  - na pasta do frontend: npm i
-  - npm start
+  - instale o yarn
+  - na pasta do frontend: yarn install
+  - yarn start
 
 <a name="usuariopadrao"/></a> 
 ## Usuario Padrão para teste
