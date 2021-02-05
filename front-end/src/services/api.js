@@ -2,10 +2,10 @@ import axios from "axios";
 import { notify } from "./../utils/notify";
 
 axios.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     //Erro de conexão
     if (error.message && error.message === "Network Error") {
       notify(
@@ -30,7 +30,7 @@ axios.interceptors.response.use(
   }
 );
 
-axios.defaults.baseURL = process.env.REACT_APP_API_PLUG;
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.defaults.timeout = 1 * 60 * 60 * 10000000;
 

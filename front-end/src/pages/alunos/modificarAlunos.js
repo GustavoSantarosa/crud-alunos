@@ -16,26 +16,26 @@ import "./.alunos.css";
 const ModificarAlunos = ({ location }) => {
   const { goBack } = useHistory();
   const [loading, setLoading] = useState(false);
-  const [nome, setNome] = useState(location.state.row.Nome);
-  const [email, setEmail] = useState(location.state.row.Email);
-  const [genero, setGenero] = useState(location.state.row.Genero);
+  const [nome, setNome] = useState(location.state.row.nome);
+  const [email, setEmail] = useState(location.state.row.email);
+  const [genero, setGenero] = useState(location.state.row.genero);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       setLoading(true);
 
       const result = await api.put(
-        `motivoCancelamento/${location.state.row.Id}`,
+        `motivoCancelamento/${location.state.row.id}`,
         {
-          Nome: nome,
-          Email: email,
-          Genero: genero,
+          nome: nome,
+          email: email,
+          genero: genero,
         }
       );
 
       if (result) {
-        notify("Motivo de cancelamento atualizado com sucesso.", true, "info");
+        notify("Aluno atualizado com sucesso.", true, "info");
 
         goBack();
       }
@@ -62,7 +62,7 @@ const ModificarAlunos = ({ location }) => {
                 autoFocus
                 type="text"
                 value={nome}
-                onChange={e => setNome(e.target.value)}
+                onChange={(e) => setNome(e.target.value)}
               />
             </FormControl>
 
@@ -72,7 +72,7 @@ const ModificarAlunos = ({ location }) => {
                 autoFocus
                 type="text"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
 
@@ -81,10 +81,10 @@ const ModificarAlunos = ({ location }) => {
                 select
                 label="Genero*"
                 value={genero}
-                onChange={e => setGenero(e.target.value)}
+                onChange={(e) => setGenero(e.target.value)}
                 helperText="Selecione o genero"
               >
-                {["Masculino", "Feminino"].map(option => (
+                {["Masculino", "Feminino"].map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
                   </MenuItem>

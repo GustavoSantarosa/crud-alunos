@@ -21,22 +21,24 @@ const Login = () => {
     sessionStorage.clear();
   }, [setUser]);
 
-  const onFormSubmit = async e => {
+  const onFormSubmit = async (e) => {
     try {
       e.preventDefault();
       setLoading(true);
 
-      const { data } = await api.post("usuario/autenticar", {
-        Email: email,
-        Senha: password,
+      const { data } = await api.post("api/public/login", {
+        email: email,
+        password: password,
       });
+
+      console.log(data);
 
       if (!data) throw new Error();
 
-      sessionStorage.setItem("token", data.authCognito.accessToken);
+      sessionStorage.setItem("token", data.access_token);
 
       setUser({
-        Token: data.Token,
+        Token: data.access_token,
       });
 
       setLoading(false);
@@ -61,7 +63,7 @@ const Login = () => {
                   autoFocus
                   type="text"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormControl>
               <FormControl className="formControl" id="passwordLogin">
@@ -69,13 +71,13 @@ const Login = () => {
                 <Input
                   type={showPassword ? "text" : "password"}
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   endAdornment={
                     <IconButton
                       className="eyePasswordIcon"
                       aria-label="toggle password visibility"
                       onClick={() => setShowPassword(!showPassword)}
-                      onMouseDown={e => e.preventDefault()}
+                      onMouseDown={(e) => e.preventDefault()}
                     >
                       {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>

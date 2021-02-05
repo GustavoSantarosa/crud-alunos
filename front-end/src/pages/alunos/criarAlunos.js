@@ -20,12 +20,12 @@ const CriarAlunos = () => {
   const [email, setEmail] = useState("");
   const [genero, setGenero] = useState("");
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       setLoading(true);
 
-      const result = await api.post("public/alunos/store", {
+      const { data } = await api.post("api/pessoas/v1/aluno", {
         Nome: nome,
         Email: email,
         Genero: genero,
@@ -33,8 +33,8 @@ const CriarAlunos = () => {
 
       setLoading(false);
 
-      if (result) {
-        notify("Alunos criado com sucesso!", true, "info");
+      if (data) {
+        notify(data.msg, true, "info");
         goBack();
       }
     } catch (error) {
@@ -60,7 +60,7 @@ const CriarAlunos = () => {
                 autoFocus
                 type="text"
                 value={nome}
-                onChange={e => setNome(e.target.value)}
+                onChange={(e) => setNome(e.target.value)}
               />
             </FormControl>
 
@@ -70,7 +70,7 @@ const CriarAlunos = () => {
                 autoFocus
                 type="text"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
 
@@ -79,10 +79,10 @@ const CriarAlunos = () => {
                 select
                 label="Genero*"
                 value={genero}
-                onChange={e => setGenero(e.target.value)}
+                onChange={(e) => setGenero(e.target.value)}
                 helperText="Selecione o genero"
               >
-                {["Masculino", "Feminino"].map(option => (
+                {["Masculino", "Feminino"].map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
                   </MenuItem>

@@ -21,42 +21,42 @@ import api from "../../services/api";
 import { notify } from "../../utils/notify";
 import ModalLoading from "../../components/modalLoading/modalLoading";
 
-function createData(Id, Nome, Email, Genero) {
+function createData(id, nome, email, genero) {
   return {
-    Id,
-    Nome,
-    Email,
-    Genero,
+    id,
+    nome,
+    email,
+    genero,
   };
 }
 
 const headCells = [
   {
-    name: "Id",
+    name: "id",
     numeric: false,
     disablePadding: false,
-    label: "Id",
+    label: "id",
     sort: true,
   },
   {
-    name: "Nome",
+    name: "nome",
     numeric: false,
     disablePadding: false,
-    label: "Nome",
+    label: "nome",
     sort: false,
   },
   {
-    name: "Email",
+    name: "email",
     numeric: false,
     disablePadding: false,
-    label: "Email",
+    label: "email",
     sort: false,
   },
   {
-    name: "Genero",
+    name: "genero",
     numeric: false,
     disablePadding: false,
-    label: "Genero",
+    label: "genero",
     sort: false,
   },
   {
@@ -72,7 +72,7 @@ function EnhancedTableHead() {
   return (
     <TableHead>
       <TableRow>
-        {headCells.map(headCell => (
+        {headCells.map((headCell) => (
           <TableCell key={headCell.name} padding={"default"}>
             {headCell.label}
           </TableCell>
@@ -82,7 +82,7 @@ function EnhancedTableHead() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     display: "flex",
@@ -127,22 +127,15 @@ const VisualizarAlunos = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        // const { data: response } = await api.get("public/alunos/getAll");
-        const response = [
-          {
-            Id: 1,
-            Nome: "Alisson",
-            Genero: "Feminino",
-            Email: "alisson@hotmail.com",
-          },
-        ];
+        const { data: response } = await api.get("api/pessoas/v1/aluno");
 
-        const employees = response.map(employee => {
+        console.log(response);
+        const employees = response.map((employee) => {
           return createData(
-            employee.Id,
-            employee.Nome,
-            employee.Email,
-            employee.Genero
+            employee.id,
+            employee.nome,
+            employee.email,
+            employee.genero
           );
         });
         setRows(employees);
@@ -163,9 +156,9 @@ const VisualizarAlunos = () => {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = event => {
+  const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map(n => n.nome);
+      const newSelecteds = rows.map((n) => n.nome);
       setSelected(newSelecteds);
       return;
     }
@@ -176,8 +169,8 @@ const VisualizarAlunos = () => {
     history.push("/criarAlunos");
   };
 
-  const handleEdit = Id => {
-    const rowEdit = allRows.find(rw => rw.Id === Id);
+  const handleEdit = (id) => {
+    const rowEdit = allRows.find((rw) => rw.id === id);
     if (rowEdit) {
       history.push("/modificarAlunos", { row: rowEdit });
     } else {
@@ -185,18 +178,18 @@ const VisualizarAlunos = () => {
     }
   };
 
-  const handleDelete = async (Id, Nome) => {
-    if (window.confirm(`Você realmente quer apagar o Aluno: ${Nome}`)) {
-      const rowDelete = allRows.find(rw => rw.Id === Id);
+  const handleDelete = async (id, nome) => {
+    if (window.confirm(`Você realmente quer apagar o Aluno: ${nome}`)) {
+      const rowDelete = allRows.find((rw) => rw.id === id);
 
       if (rowDelete) {
         try {
           setLoading(true);
 
-          const deleteItem = await api.delete(`public/alunos/delete/${Id}`);
+          const deleteItem = await api.delete(`api/pessoas/v1/aluno/${id}`);
 
           if (deleteItem) {
-            const removeItem = rows.filter(item => item.Id !== Id);
+            const removeItem = rows.filter((item) => item.id !== id);
             setRows(removeItem);
             setRowsFilter(removeItem);
             notify("Aluno deletado com sucesso.", true, "info");
@@ -268,15 +261,15 @@ const VisualizarAlunos = () => {
                     {rowsFilter.map((row, index) => {
                       return (
                         <TableRow hover tabIndex={-1} key={index}>
-                          <TableCell align="left">{row.Id}</TableCell>
-                          <TableCell align="left">{row.Nome}</TableCell>
-                          <TableCell align="left">{row.Email}</TableCell>
-                          <TableCell align="left">{row.Genero}</TableCell>
+                          <TableCell align="left">{row.id}</TableCell>
+                          <TableCell align="left">{row.nome}</TableCell>
+                          <TableCell align="left">{row.email}</TableCell>
+                          <TableCell align="left">{row.genero}</TableCell>
                           <TableCell align="left">
                             <Tooltip title="Editar">
                               <IconButton
                                 aria-label="edit"
-                                onClick={() => handleEdit(row.Id)}
+                                onClick={() => handleEdit(row.id)}
                               >
                                 <EditIcon className="iconAtivo" />
                               </IconButton>
@@ -284,7 +277,7 @@ const VisualizarAlunos = () => {
                             <Tooltip title="Deletar">
                               <IconButton
                                 aria-label="delete"
-                                onClick={() => handleDelete(row.Id, row.Nome)}
+                                onClick={() => handleDelete(row.id, row.nome)}
                               >
                                 <DeleteIcon className="iconAtivo" />
                               </IconButton>
