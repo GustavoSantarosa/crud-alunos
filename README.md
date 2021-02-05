@@ -22,7 +22,7 @@
 ## Rodar API	
    - na pasta do backend: digite php artisan migrate:fresh --seed
    - php artisan key:generate
-   - rode o laravel: php artisan serve
+   - rode o laravel: php artisan jwt:secret
 <a name="rodarjs"/></a>  
 ## Rodar ReactJs
   - instale o yarn
