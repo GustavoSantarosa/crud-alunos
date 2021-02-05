@@ -9,10 +9,11 @@
 <a name="iniciando"/></a>
 ## Iniciando
   - Clonar o repositório. (git clone https://github.com/alissoonluan/crud-alunos.git)
-  - composer install
-  - Com o postgresql instalado, coloque o username padrão postgres e senha postgres
-  - Renomeie o arquivo .env.example para .env e configure as variaveis de ambiente
+  - na pasta do backend: rodar composer install
+  - Na instalação do Postgresql, colocar nome postgres e senha postgres
+  - na pasta do backend Renomeie o arquivo .env.example para .env e configure as variaveis de ambiente
   - DB_CONNECTION=pgsql
+  - DB_PORT=5432
   - DB_DATABASE=postgres
   - DB_USERNAME=postgres
   - DB_PASSWORD=postgres
@@ -24,12 +25,13 @@
    - rode o laravel: php artisan serve
 <a name="rodarjs"/></a>  
 ## Rodar ReactJs
-  - na pasta do frontend: npm i
-  - npm start
+  - instale o yarn
+  - na pasta do frontend: yarn install
+  - yarn start
 
 <a name="usuariopadrao"/></a> 
 ## Usuario Padrão para teste
-  - master
+  - master@master.com
   - master123
   
      
