@@ -36,7 +36,7 @@ axios.defaults.timeout = 1 * 60 * 60 * 10000000;
 
 function setToken() {
   axios.defaults.headers.common["Authorization"] =
-    "Bearer " + sessionStorage.token || null;
+    "Bearer " + sessionStorage.Token || null;
 }
 
 export default {

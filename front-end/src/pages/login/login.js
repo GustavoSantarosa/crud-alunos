@@ -35,7 +35,7 @@ const Login = () => {
 
       if (!data) throw new Error();
 
-      sessionStorage.setItem("token", data.access_token);
+      sessionStorage.setItem("Token", data.access_token);
 
       setUser({
         Token: data.access_token,
@@ -60,8 +60,9 @@ const Login = () => {
               <FormControl className="formControl">
                 <InputLabel htmlFor="email">E-mail</InputLabel>
                 <Input
+                  required
                   autoFocus
-                  type="text"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -69,6 +70,7 @@ const Login = () => {
               <FormControl className="formControl" id="passwordLogin">
                 <InputLabel htmlFor="password">Senha</InputLabel>
                 <Input
+                  required
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

@@ -60,6 +60,7 @@ const CriarAlunos = () => {
               <FormControl className="formControl" id="controlUser">
                 <InputLabel>Nome*</InputLabel>
                 <Input
+                  required
                   autoFocus
                   type="text"
                   value={name}
@@ -70,8 +71,9 @@ const CriarAlunos = () => {
               <FormControl className="formControl" id="controlUser">
                 <InputLabel>E-mail*</InputLabel>
                 <Input
+                  required
                   autoFocus
-                  type="text"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -79,6 +81,7 @@ const CriarAlunos = () => {
 
               <div className="textList">
                 <TextField
+                  required
                   select
                   label="Genero*"
                   value={genero}

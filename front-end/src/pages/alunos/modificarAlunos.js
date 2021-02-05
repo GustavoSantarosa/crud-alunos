@@ -62,6 +62,7 @@ const ModificarAlunos = ({ location }) => {
               <FormControl className="formControl" id="controlUser">
                 <InputLabel>Nome*</InputLabel>
                 <Input
+                  required
                   autoFocus
                   type="text"
                   value={name}
@@ -72,8 +73,9 @@ const ModificarAlunos = ({ location }) => {
               <FormControl className="formControl" id="controlUser">
                 <InputLabel>E-mail*</InputLabel>
                 <Input
+                  required
                   autoFocus
-                  type="text"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -81,6 +83,7 @@ const ModificarAlunos = ({ location }) => {
 
               <div className="textList">
                 <TextField
+                  required
                   select
                   label="Genero*"
                   value={genero}
